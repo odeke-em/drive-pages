@@ -1,0 +1,654 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Drive Client Homepage</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="assests/style.css" media="screen" />
+<LINK REL="SHORTCUT ICON" 
+      HREF="favicon.ico">
+</head>
+<body>
+<div id="container">
+  <!-- Begin Header -->
+  <div id="header"> <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
+    <div class="headercontent">
+        <h1><img src="assests/logo9000.png"></h1>
+      <h2>A Command Line Google Drive Client.</h2>
+      <!-- Begin Menu -->
+      <div id="menucontainer">
+        <div id="menu"><span class="mleft"></span>
+          <div class="box"><a href="index.html">Home</a></div>
+          <div class="boxx">
+            <div class="boxx1"></div>
+            <div class="boxx2"></div>
+            <div class="boxx3"></div>
+            <div class="boxx4"></div>
+            <div class="boxx5"></div>
+            <div class="boxx6"></div>
+            <div class="boxx7"></div>
+            <div class="boxx8"></div>
+          </div>
+          <div class="box"><a href="install.html">Install</a></div>
+          <div class="boxx">
+            <div class="boxx1"></div>
+            <div class="boxx2"></div>
+            <div class="boxx3"></div>
+            <div class="boxx4"></div>
+            <div class="boxx5"></div>
+            <div class="boxx6"></div>
+            <div class="boxx7"></div>
+            <div class="boxx8"></div>
+          </div>
+          <div class="box"><a href="dev.html">Develop</a></div>
+          <div class="boxx">
+            <div class="boxx1"></div>
+            <div class="boxx2"></div>
+            <div class="boxx3"></div>
+            <div class="boxx4"></div>
+            <div class="boxx5"></div>
+            <div class="boxx6"></div>
+            <div class="boxx7"></div>
+            <div class="boxx8"></div>
+          </div>
+          <div class="box"><a href="http://www.github.com/odeke-em/drive">Github</a></div>
+          <div class="boxx">
+            <div class="boxx1"></div>
+            <div class="boxx2"></div>
+            <div class="boxx3"></div>
+            <div class="boxx4"></div>
+            <div class="boxx5"></div>
+            <div class="boxx6"></div>
+            <div class="boxx7"></div>
+            <div class="boxx8"></div>
+          </div>
+          <div class="box"><a href="about.html">About</a></div>
+          <div class="boxx">
+            <div class="boxx1"></div>
+            <div class="boxx2"></div>
+            <div class="boxx3"></div>
+            <div class="boxx4"></div>
+            <div class="boxx5"></div>
+            <div class="boxx6"></div>
+            <div class="boxx7"></div>
+            <div class="boxx8"></div>
+          </div>
+          <div class="box"><a href="faq.html">FAQ</a></div>
+          <span class="mright"></span> </div>
+      </div>
+      <!-- End Menu -->
+    </div>
+    <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b> </div>
+  <!-- End Header --><p><div class="wide"></p>
+
+<h3>Configuration</h3>
+
+<p>Optionally set the <code>GOOGLE_API_CLIENT_ID</code> and <code>GOOGLE_API_CLIENT_SECRET</code> environment variables to use your own API keys.</p>
+
+<h3>Usage</h3>
+
+<h1>Initializing</h1>
+
+<p>Before you can use <code>drive</code>, you need to mount your Google Drive directory on your local file system:</p>
+
+<p><code>$ drive init ~/gdrive</code></p>
+
+<p><code>$ cd ~/gdrive</code></p>
+
+<h3>Pulling</h3>
+
+<p>The <code>pull</code> command downloads data from Google Drive that does not exist locally, and deletes local data that is not present on Google Drive. 
+Run it without any arguments to pull all of the files from the current path:</p>
+
+<p><code>
+$ drive pull
+</code></p>
+
+<p>Pulling by matches is also supported</p>
+
+<p>$ cd ~/myDrive/content/2015
+$ drive pull --matches vines docx</p>
+
+<p>To force download from paths that otherwise would be marked with no-changes</p>
+
+<p>$ drive pull -force</p>
+
+<p>To pull specific files or directories, pass in one or more paths:</p>
+
+<p>$ drive pull photos/img001.png docs</p>
+
+<p>Pulling by id is also supported</p>
+
+<p>$ drive pull --id 0fM9rt0Yc9RTPaDdsNzg1dXVjM0E 0fM9rt0Yc9RTPaTVGc1pzODN1NjQ 0fM9rt0Yc9RTPV1NaNFp5WlV3dlU</p>
+
+<h1>Note: Checksum verification:</h1>
+
+<ul>
+<li>By default checksum-ing is turned off because it was deemed to be quite vigorous and unnecessary for most cases.</li>
+<li>Due to popular demand to cover the common case in which size + modTime differences are sufficient to detect file changes. The discussion stemmed from issue <a href="https://github.com/odeke-em/drive/issues/117">#117</a>.</li>
+</ul>
+
+<p>To turn checksum verification back on:</p>
+
+<p>$ drive pull -ignore-checksum=false</p>
+
+<p>drive also supports piping pulled content to stdout which can be accomplished by:</p>
+
+<p>$ drive pull -piped path1 path2</p>
+
+<h4>Exporting Docs</h4>
+
+<p>By default, the <code>pull</code> command will export Google Docs documents as PDF files. To specify other formats, use the <code>-export</code> option:</p>
+
+<p>$ drive pull -export pdf,rtf,docx,txt</p>
+
+<p>To explicitly export instead of using <code>--force</code></p>
+
+<p>$ drive pull --export pdf,rtf,docx,txt --explicitly-export</p>
+
+<p>By default, the exported files will be placed in a new directory suffixed by <code>_exports</code> in the same path. To export the files to a different directory, use the <code>-export-dir</code> option:</p>
+
+<p>$ drive pull -export pdf,rtf,docx,txt -export-dir ~/Desktop/exports</p>
+
+<p><strong>Supported formats:</strong></p>
+
+<ul>
+<li>doc, docx</li>
+<li>jpeg, jpg</li>
+<li>gif</li>
+<li>html</li>
+<li>odt</li>
+<li>rtf</li>
+<li>pdf</li>
+<li>png</li>
+<li>ppt, pptx</li>
+<li>svg</li>
+<li>txt, text</li>
+<li>xls, xlsx</li>
+</ul>
+
+<h3>Pushing</h3>
+
+<p>The <code>push</code> command uploads data to Google Drive to mirror data stored locally.</p>
+
+<p>Like <code>pull</code>, you can run it without any arguments to push all of the files from the current path, or you can pass in one or more paths to push specific files or directories.</p>
+
+<p>Note: To ignore checksum verification during a push:</p>
+
+<p>$ drive push -ignore-checksum</p>
+
+<p>drive also supports pushing content piped from stdin which can be accomplished by:</p>
+
+<p>$ drive push -piped path</p>
+
+<ul>
+<li><p>Note:</p>
+
+<ul>
+<li>In relation to <a href="https://github.com/odeke-em/drive/issues/107">#107</a> and numerous other issues related to confusion about clashing paths, drive will abort on trying to deal with clashing names. To turn off this safety, pass in flag <code>--ignore-name-clash</code>.</li>
+<li>In relation to <a href="https://github.com/odeke-em/drive/issues/57">#57</a> and <a href="https://github.com/rakyll/drive/issues/49">@rakyll&#39;s #49</a>.
+A couple of scenarios in which data was getting totally clobbered and unrecoverable, drive now tries to play it safe and warn you if your data could potentially be lost e.g during a to-disk clobber for which you have no backup. At least with a push you have the luxury of untrashing content. To disable this safety, run drive with flag <code>-ignore-conflict</code> e.g:</li>
+</ul>
+
+<p>$ drive pull -ignore-conflict collaboration_documents</p>
+
+<p>Playing the safety card even more, if you want to get changes that are non clobberable ie only additions
+run drive with flag <code>-no-clobber</code> e.g:</p>
+
+<p>$ drive pull -no-clobber Makefile
+* Ordinarily your system will not traverse nested symlinks e.g:</p>
+
+<p>$ mkdir -p a/b
+$ mkdir -p ~/Desktop/z1/z2 &amp;&amp; ls ~ &gt; ~/Desktop/z1/z2/listing.txt
+$ ln -s ~/Desktop/z1/z2 a/b
+$ ls -R a # Should print only z2 and nothing inside it. </p>
+
+<p>However in relation to <a href="https://github.com/odeke-em/drive/issues/80">#80</a>, for purposes of consistency with your Drive, traversing symlinks has been added.</p></li>
+</ul>
+
+<p>For safety with non clobberable changes i.e only additions:</p>
+
+<p>$ drive push -no-clobber</p>
+
+<ul>
+<li>Due to the reasons above, drive should be able to warn you in case of total clobbers on data. To turn off this behaviour/safety, pass in the <code>-ignore-conflict</code> flag i.e:</li>
+</ul>
+
+<p>$ drive push -force sure<em>of</em>content</p>
+
+<p>To pull without user input (i.e. without prompt)</p>
+
+<p>$ drive push -quiet</p>
+
+<p>or</p>
+
+<p>$ drive push -no-prompt</p>
+
+<p>To get Google Drive to convert a file to its native Google Docs format</p>
+
+<p>$ drive push -convert</p>
+
+<p>Extra features: to make Google Drive attempt Optical Character Recognition (OCR) for png, gif, pdf and jpg files.</p>
+
+<p>$ drive push -ocr</p>
+
+<p>Note: To use OCR, your account should have this feature. You can find out if your account has OCR allowed.</p>
+
+<p>$ drive features</p>
+
+<h1>Note:</h1>
+
+<ul>
+<li>MimeType inference is from the file&#39;s extension.</li>
+</ul>
+
+<p>If you would like to coerce a certain mimeType that you&#39;d prefer to assert with Google Drive pushes, use flag <code>-coerce-mime &lt;short-key&gt;</code></p>
+
+<p>$ drive push -coerce-mime docx my<em>test</em>doc</p>
+
+<ul>
+<li>Excluding certain operations can be done both for pull and push by passing in flag
+<code>--exclude-ops</code> <csv_crud_values></li>
+</ul>
+
+<p>e.g</p>
+
+<p>$ drive pull --exclude-ops &quot;delete,update&quot; vines
+$ drive push --exclude-ops &quot;create&quot; sensitive_files</p>
+
+<h3>Publishing</h3>
+
+<p>The <code>pub</code> command publishes a file or directory globally so that anyone can view it on the web using the link returned.</p>
+
+<p>$ drive pub photos</p>
+
+<ul>
+<li>Publishing by fileId is also supported</li>
+</ul>
+
+<p>$ drive pub --id 0fM9rt0Yc9RTPV1NaNFp5WlV3dlU 0fM9rt0Yc9RTPSTZEanBsamZjUXM</p>
+
+<h3>Unpublishing</h3>
+
+<p>The <code>unpub</code> command is the opposite of <code>pub</code>. It unpublishes a previously published file or directory.</p>
+
+<p>$ drive unpub photos</p>
+
+<ul>
+<li>Publishing by fileId is also supported</li>
+</ul>
+
+<p>$ drive unpub --id 0fM9rt0Yc9RTPV1NaNFp5WlV3dlU 0fM9rt0Yc9RTPSTZEanBsamZjUXM</p>
+
+<h3>Sharing and Emailing</h3>
+
+<p>The <code>share</code> command enables you to share a set of files with specific users and assign them specific roles as well as specific generic access to the files. It also allows for email notifications on share.</p>
+
+<p>$ drive share -emails odeke@ualberta.ca,odeke.ex@gmail.com -message &quot;This is the substring file I told you about&quot; -role writer -type group mnt/substringfinder.c projects/kmp.c</p>
+
+<p>For example to share a file with users of a mailing list and a custom message</p>
+
+<p>$ drive share -emails drive-mailing-list@gmail.com -message &quot;Here is the drive code&quot; -role group mnt/drive</p>
+
+<ul>
+<li>Also supports sharing by fileId</li>
+</ul>
+
+<p>$ drive share --emails developers@developers.devs --message &quot;Developers, developers developers&quot; --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+
+<h3>Unsharing</h3>
+
+<p>The <code>unshare</code> command revokes access of a specific accountType to a set of files.</p>
+
+<p>$ drive unshare -type group mnt/drive</p>
+
+<ul>
+<li>Also supports unsharing by fileId</li>
+</ul>
+
+<p>$ drive unshare --type group --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+
+<h3>Touching</h3>
+
+<p>Files that exist remotely can be touched i.e their modification time updated to that on the remote server using the <code>touch</code> command:</p>
+
+<p>$ drive touch Photos/img001.png logs/log9907.txt</p>
+
+<p>For example to touch all files that begin with digits 0  to 9:</p>
+
+<p>$ drive touch -matches $(seq 0 9)</p>
+
+<ul>
+<li>Also supports touching of files by fileId</li>
+</ul>
+
+<p>$ drive touch --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+
+<h3>Trashing and Untrashing</h3>
+
+<p>Files can be trashed using the <code>trash</code> command:</p>
+
+<p>$ drive trash Demo</p>
+
+<p>To trash files that contain a prefix match e.g all files that begin with Untitled, or Make</p>
+
+<p>Note: This option uses the current working directory as the parent that the paths belong to.</p>
+
+<p>$ drive trash -matches Untitled Make</p>
+
+<p>Files that have been trashed can be restored using the <code>untrash</code> command:</p>
+
+<p>$ drive untrash Demo</p>
+
+<p>To untrash files that match a certain prefix pattern</p>
+
+<p>$ drive untrash -matches pQueue photos Untitled</p>
+
+<ul>
+<li>Also supports trashing/untrashing by fileId</li>
+</ul>
+
+<p>$ drive trash --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U
+$ drive untrash --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+
+<h3>Emptying the Trash</h3>
+
+<p>Emptying the trash will permanently delete all trashed files. They will be unrecoverable using <code>untrash</code> after running this command.</p>
+
+<p>$ drive emptytrash</p>
+
+<h3>Deleting</h3>
+
+<p>Deleting items will PERMANENTLY remove the items from your drive. This operation is irreversible.</p>
+
+<p>$ drive delete flux.mp4</p>
+
+<p>$ drive delete --matches onyx swp</p>
+
+<ul>
+<li>Also supports deletion by fileIds</li>
+</ul>
+
+<p>$ drive delete --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+
+<h3>Listing Files</h3>
+
+<p>The <code>list</code> command shows a paginated list of paths on the cloud.</p>
+
+<p>Run it without arguments to list all files in the current directory:</p>
+
+<p>$ drive list</p>
+
+<p>Pass in a directory path to list files in that directory:</p>
+
+<p>$ drive list photos</p>
+
+<p>To list matches</p>
+
+<p>$ drive list --matches mp4 go</p>
+
+<p>The <code>-trashed</code> option can be specified to show trashed files in the listing:</p>
+
+<p>$ drive list -trashed photos</p>
+
+<p>To get detailed information about the listings e.g owner information and the version number of all listed files:</p>
+
+<p>$ drive list -owners -l -version</p>
+
+<ul>
+<li>Also supports listing by fileIds</li>
+</ul>
+
+<p>$ drive list -depth 3 --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+
+<ul>
+<li>Listing allows for sorting by fields e.g <code>name</code>, <code>version</code>, <code>size,</code>modtime<code>, lastModifiedByMeTime</code>lvt<code>,</code>md5<code>. To do this in reverse order, suffix</code>_r<code>or</code>-` to the selected key</li>
+</ul>
+
+<p>e.g to first sort by modTime, then largest-to-smallest and finally most number of saves:</p>
+
+<p>$ drive list --sort modtime,size<em>r,version</em>r Photos</p>
+
+<ul>
+<li>For advanced listing</li>
+</ul>
+
+<p>$ drive list --skip-mime mp4,doc,txt
+$ drive list --match-mime xls,docx
+$ drive list --exact-title url_test,Photos</p>
+
+<h3>Stating Files</h3>
+
+<p>The <code>stat</code> commands show detailed file information for example people with whom it is shared, their roles and accountTypes, and
+fileId etc. It is useful to help determine whom and what you want to be set when performing share/unshare</p>
+
+<p>$ drive stat mnt</p>
+
+<p>By default <code>stat</code> won&#39;t recursively stat a directory, to enable recursive stating:</p>
+
+<p>$ drive stat -r mnt</p>
+
+<ul>
+<li>Also supports stat-ing by fileIds</li>
+</ul>
+
+<p>$ drive stat -r --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+
+<p>OR</p>
+
+<p>$ drive stat -depth 4 --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+
+<h3>Retrieving md5 Checksums</h3>
+
+<p>The <code>md5sum</code> command quickly retrieves the md5 checksums of the files on your drive. The result can be fed into the &quot;md5sum -c&quot; shell command to validate the integrity of the files on Drive versus the local copies.</p>
+
+<p>Check that files on Drive are present and match local files:</p>
+
+<p>~/MyDrive/folder$ drive md5sum | md5sum -c</p>
+
+<p>Do a two-way diff (will also locate files missing on either side)</p>
+
+<p>~/MyDrive/folder$ diff &lt;(drive md5sum) &lt;(md5sum *)</p>
+
+<p>Same as above, but include subfolders </p>
+
+<p>~/MyDrive/folder$ diff &lt;(drive md5sum -r) &lt;(find * -type f | sort | xargs md5sum)</p>
+
+<p>Compare across two different Drive accounts, including subfolders</p>
+
+<p>~$ diff &lt;(drive md5sum -r MyDrive/folder) &lt;(drive md5sum -r OtherDrive/otherfolder)</p>
+
+<p><em>Note: Running the &#39;drive md5sum&#39; command retrieves pre-computed md5 sums from Drive; its speed is proportional to the number of files on Drive. Running the shell &#39;md5sum&#39; command on local files requires reading through the files; its speed is proportional to the size of the files.</em></p>
+
+<h3>New File</h3>
+
+<p>drive allows you to create an empty file or folder remotely
+Sample usage:</p>
+
+<p>$ drive new --folder flux
+$ drive new --mime-key doc bofx
+$ drive new --mime-key folder content
+$ drive new flux.txt oxen.pdf # Allow auto type resolution from the extension</p>
+
+<h3>Quota</h3>
+
+<p>The <code>quota</code> command prints information about your drive, such as the account type, bytes used/free, and the total amount of storage available.</p>
+
+<p>$ drive quota</p>
+
+<h3>Features</h3>
+
+<p>The <code>features</code> command provides information about the features present on the
+drive being queried and the request limit in queries per second</p>
+
+<p>$ drive features</p>
+
+<h3>About</h3>
+
+<p>The <code>about</code> command provides information about the program as well as that about
+your Google Drive. Think of it as a hybrid between the <code>features</code> and <code>quota</code> commands.</p>
+
+<p>$ drive about</p>
+
+<p>OR for detailed information</p>
+
+<p>$ drive about -features -quota</p>
+
+<h3>Help</h3>
+
+<p>Run the <code>help</code> command without any arguments to see information about the commands that are available:</p>
+
+<p>$ drive help</p>
+
+<p>Pass in the name of a command to get information about that specific command and the options that can be passed to it.</p>
+
+<p>$ drive help push</p>
+
+<p>To get help for all the commands</p>
+
+<p>$ drive help all</p>
+
+<h3>Copying</h3>
+
+<p>drive allows you to copy content remotely without having to explicitly download and then reupload.</p>
+
+<p>$ drive copy -r blobStore.py mnt flagging</p>
+
+<p>$ drive copy blobStore.py blobStoreDuplicated.py</p>
+
+<ul>
+<li>Also supports copying by fileIds</li>
+</ul>
+
+<p>$ drive copy -r --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U ../content</p>
+
+<h3>Rename</h3>
+
+<p>drive allows you to rename a file/folder remotely. To do so:</p>
+
+<p>$ drive rename url<em>test url</em>test_results
+$ drive rename openSrc/2015 2015-Contributions</p>
+
+<ul>
+<li>Also supports renaming by fileId</li>
+</ul>
+
+<p>$ drive rename 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 fluxing</p>
+
+<h3>Move</h3>
+
+<p>drive allows you to move content remotely between folders. To do so:</p>
+
+<p>$ drive move photos/2015 angles library archives/storage</p>
+
+<ul>
+<li>Also supports moving by fileId</li>
+</ul>
+
+<p>$ drive rename 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U ../../new_location</p>
+
+<h3>DriveIgnore</h3>
+
+<p>drive allows you to specify a &#39;.driveignore&#39; file similar to your .gitignore, in the root
+directory of the mounted drive. Blank lines and those prefixed by &#39;#&#39; are considered as comments and skipped.</p>
+
+<p>For example:</p>
+
+<p>$ cat &lt;&lt; $ &gt;&gt; .driveignore</p>
+
+<blockquote>
+<h1>My drive ignore file</h1>
+
+<p>.gd$
+.so$
+.swp$
+$</p>
+</blockquote>
+
+<p>Note: Pattern matching and suffixes are done by regular expression matching so make sure to use a valid regular expression suffix.</p>
+
+<h3>DesktopEntry</h3>
+
+<p>As previously mentioned, Google Docs, Drawings, Presentations, Sheets etc and all files affiliated
+with docs.google.com cannot be downloaded raw but only exported. Due to popular demand, Linux users
+desire the ability to have *.desktop files that enable the file to be opened appropriately by an external opener. Thus by default on Linux, drive will create *.desktop files for files that fall into this category.</p>
+
+<h3>Command Aliases</h3>
+
+<p><code>drive</code> supports a few aliases to make usage familiar to the utilities in your shell e.g:
++ cp : copy
++ ls : list 
++ mv : move</p>
+
+<h3>Index Prune</h3>
+
+<ul>
+<li>index </li>
+</ul>
+
+<p>If you would like to fetch missing index files for files that would otherwise not need any modifications, run:</p>
+
+<p>$ drive index path1 path2 path3/path3.1 # To fetch any missing indices in those paths
+$ drive index --id 0CLu4lbUI9RTRM80k8EMoe5JQY2z</p>
+
+<p>You can also fetch specific files by prefix matches</p>
+
+<p>$ drive index --matches mp3 jpg</p>
+
+<ul>
+<li>prune</li>
+</ul>
+
+<p>In case you might have deleted files remotely but never using drive, and feel like you have stale indices,
+running <code>drive index --prune</code> will search your entire indices dir for index files that do not exist remotely and remove those ones</p>
+
+<p>$ drive index --prune</p>
+
+<ul>
+<li>prune-and-index
+To combine both operations (prune and then fetch) for indices:</li>
+</ul>
+
+<p>$ drive index --all-ops</p>
+
+<h3>Revoking Account Access</h3>
+
+<p>To revoke OAuth Access of drive to your account, when logged in with your Google account, go to https://security.google.com/settings/security/permissions and revoke the desired permissions</p>
+
+<h3>Uninstalling</h3>
+
+<p>To remove <code>drive</code> from your computer, you&#39;ll need to take out:</p>
+
+<ul>
+<li><p>$GOPATH/bin/drive</p></li>
+<li><p>$GOPATH/src/github.com/odeke-em/drive</p></li>
+<li><p>$GOPATH/pkg/github.com/odeke-em/drive</p></li>
+<li><p>$GOPATH/pkg/github.com/odeke-em/drive.a</p></li>
+<li><p>Also do not forget to revoke drive&#39;s access in case you need to uninstall it.</p></li>
+</ul>
+
+<h3>Applying patches</h3>
+
+<p>To  apply patches of code e.g in the midst of bug fixes, you&#39;ll just need a little bit of git fiddling.</p>
+
+<p>For example to patch your code with that on remote branch patch-1, you&#39;ll need to go into the source
+code directory, fetch all content from the git remote, checkout the patch branch then run the go installation: something like this.</p>
+
+<p>$ cd $GOPATH/src/github.com/odeke-em/drive</p>
+
+<p>$ git fetch --all</p>
+
+<p>$ git checkout patch-1</p>
+
+<p>$ git pull origin patch-1</p>
+
+<p>$ go get github.com/odeke-em/drive/cmd/drive</p>
+
+<p></div></p>
+  <!-- Begin Footer -->
+  <div id="footer">
+      <p>&copy; Copyright 2015 <a href="https://github.com/odeke-em">Emmanuel Odeke</a> and <a href="https://github.com/odeke-em/drive">Contirbutors</a> | Drive <a href="https://github.com/odeke-em/drive/blob/master/LICENSE">License</a></p>
+  </div>
+  <!-- End Footer -->
+</div>
+</body>
+</html>
