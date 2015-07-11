@@ -28,52 +28,11 @@ This is another regular paragraph.
         return 0
     fi
 }
-</code></pre>
+
 
 ![Alt text](assests/logo9000.png "alt title")
 
-Markdown is a light text markup format and a processor to convert that to HTML.
-The originator describes it as follows:
 
-> Markdown is a text-to-HTML conversion tool for web writers.
-> Markdown allows you to write using an easy-to-read,
-> easy-to-write plain text format, then convert it to
-> structurally valid XHTML (or HTML).
->
-> -- <http://daringfireball.net/projects/markdown/>
-
-*this is in italic*  and _so is this_
-
-**this is in bold**  and __so is this__
-
-***this is bold and italic***  and ___so is this___
-
-
-
-Lists
---------
-
-* an asterisk starts an unordered list
-* and this is another item in the list
-+ or you can also use the + character
-- or the - character
-
-To start an ordered list, write this:
-
-1. this starts a list *with* numbers
-+  this will show as number "2"
-*  this will show as number "3."
-9. any number, +, -, or * will keep the list going.
-    * just indent by 4 spaces (or tab) to make a sub-list
-        1. keep indenting for more sub lists
-    * here i'm back to the second level
-        
-
-
-
-
-
-<img src="http://i.imgur.com/FJecc1V.jpg" alt=""/>
 
 <script src="https://gist.github.com/shaggytwodope/5462663.js"></script>
   </div>
