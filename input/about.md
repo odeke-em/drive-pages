@@ -21,16 +21,35 @@ Background sync is not just hard, it is stupid. My technical and philosophical r
 
 * Upstreaming and downstreaming. Unlike a sync command, we provide pull and push actions. User has opportunity to decide what to do with their local copy and when. Do some changes, either push it to remote or revert it to the remote version. Perform these actions with user prompt.
 
-	    $ echo "hello" > hello.txt
-	    $ drive push # pushes hello.txt to Google Drive
-	    $ echo "more text" >> hello.txt
-	    $ drive pull # overwrites the local changes with the remote version
+```
+$ echo "hello" > hello.txt
+```
+
+```
+$ drive push # pushes hello.txt to Google Drive
+```
+
+```
+$ echo "more text" >> hello.txt
+```
+
+```
+$ drive pull # overwrites the local changes with the remote version
+```
 
 * Allowing to work with a specific file or directory, optionally not recursively. If you recently uploaded a large VM image to Google Drive, yet  only a few text files are required for you to work, simply only push/pull the file you want to work with.
 
-	    $ echo "hello" > hello.txt
-	    $ drive push hello.txt # pushes only the specified file
-	    $ drive pull path/to/a/b # pulls the remote directory recursively
+```
+$ echo "hello" > hello.txt
+```
+
+```
+$ drive push hello.txt``` # pushes only the specified file
+
+
+```
+$ drive pull path/to/a/b``` # pulls the remote directory recursively
+
 
 * Better I/O scheduling. One of the major goals is to provide better scheduling to improve upload/download times.
 
@@ -59,7 +78,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

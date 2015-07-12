@@ -86,13 +86,21 @@
 
 <h1>Make sure to set your GOPATH in your env, .bashrc or .bash_profile file. If you have not yet set it, you can do so like this:</h1>
 
-<p>$ cat &lt;&lt; ! &gt;&gt; ~/.bashrc</p>
+<p><code>
+$ cat &lt;&lt; ! &gt;&gt; ~/.bashrc
+</code></p>
 
-<p>$ export GOPATH=\$HOME/gopath</p>
+<p><code>
+$ export GOPATH=\$HOME/gopath
+</code></p>
 
-<p>$ export PATH=\$GOPATH:\$GOPATH/bin:\$PATH</p>
+<p><code>
+$ export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
+</code></p>
 
-<p>$ source ~/.bashrc </p>
+<p><code>
+$ source ~/.bashrc 
+</code></p>
 
 <h1>To reload the settings and get the newly set ones Or open a fresh terminal</h1>
 
@@ -166,33 +174,51 @@ a helper, you can find a list <a href="https://wiki.archlinux.org/index.php/AUR_
 
 <h1>This includes Ubuntu, Mint, Linux Lite, etc. <a href="http://distrowatch.com/search.php?basedon=Ubuntu">List</a></h1>
 
-<p>$ sudo add-apt-repository ppa:twodopeshaggy/drive</p>
+<p><code>
+$ sudo add-apt-repository ppa:twodopeshaggy/drive
+</code></p>
 
-<p>$ sudo apt-get update</p>
+<p><code>
+$ sudo apt-get update
+</code></p>
 
-<p>$ sudo apt-get install drive</p>
+<p><code>
+$ sudo apt-get install drive
+</code></p>
 
 <h3>openSUSE distro. (may also work with fedora, CentOS, Red Hat)</h3>
 
 <h1>Install needed software tools</h1>
 
-<p>$ sudo yum install go mercurial git hg-git</p>
+<p><code>
+$ sudo yum install go mercurial git hg-git
+</code></p>
 
-<p>$ mkdir $HOME/go</p>
+<p><code>
+$ mkdir $HOME/go
+</code></p>
 
-<p>$ export GOPATH=$HOME/go</p>
+<p><code>
+$ export GOPATH=$HOME/go
+</code></p>
 
 <h1>For convenience, add the workspace&#39;s bin subdirectory to your PATH:</h1>
 
-<p>$ export PATH=$PATH:$GOPATH/bin</p>
+<p><code>
+$ export PATH=$PATH:$GOPATH/bin
+</code></p>
 
 <h1>Get and compile the drive program</h1>
 
-<p>$ go get github.com/odeke-em/drive/cmd/drive</p>
+<p><code>
+$ go get github.com/odeke-em/drive/cmd/drive
+</code></p>
 
 <h1>Run drive with this command:</h1>
 
-<p>$ $GOPATH/bin/drive</p>
+<p><code>
+$ $GOPATH/bin/drive
+</code></p>
 
 <p></div></p>
   <!-- Begin Footer -->

@@ -5,14 +5,21 @@ go 1.3.X or higher is required. See [here](https://golang.org/doc/install) for i
 
 # Make sure to set your GOPATH in your env, .bashrc or .bash\_profile file. If you have not yet set it, you can do so like this:
 
-
+```
 $ cat << ! >> ~/.bashrc
+```
 
+```
 $ export GOPATH=\$HOME/gopath
+```
 
+```
 $ export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
+```
 
+```
 $ source ~/.bashrc 
+```
 
 # To reload the settings and get the newly set ones Or open a fresh terminal
 
@@ -84,34 +91,46 @@ a helper, you can find a list [here](https://wiki.archlinux.org/index.php/AUR_he
 ### Ubuntu, or Ubuntu based distros. 
 #This includes Ubuntu, Mint, Linux Lite, etc. [List](http://distrowatch.com/search.php?basedon=Ubuntu)
 
-
+```
 $ sudo add-apt-repository ppa:twodopeshaggy/drive
+```
 
+```
 $ sudo apt-get update
+```
 
+```
 $ sudo apt-get install drive
-
+```
 
 ### openSUSE distro. (may also work with fedora, CentOS, Red Hat)
 
 # Install needed software tools
+```
 $ sudo yum install go mercurial git hg-git
+```
 
+```
 $ mkdir $HOME/go
+```
 
+```
 $ export GOPATH=$HOME/go
+```
 # For convenience, add the workspace's bin subdirectory to your PATH:
+```
 $ export PATH=$PATH:$GOPATH/bin
+```
 
 # Get and compile the drive program
+```
 $ go get github.com/odeke-em/drive/cmd/drive
+```
 
 # Run drive with this command:
+```
 $ $GOPATH/bin/drive
-
-
-
-
+```
 
   </div>
 

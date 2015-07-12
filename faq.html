@@ -105,20 +105,31 @@ $ drive pull
 
 <p>Pulling by matches is also supported</p>
 
-<p>$ cd ~/myDrive/content/2015
-$ drive pull --matches vines docx</p>
+<p><code>
+$ cd ~/myDrive/content/2015
+</code></p>
+
+<p><code>
+$ drive pull --matches vines docx
+</code></p>
 
 <p>To force download from paths that otherwise would be marked with no-changes</p>
 
-<p>$ drive pull -force</p>
+<p><code>
+$ drive pull -force
+</code></p>
 
 <p>To pull specific files or directories, pass in one or more paths:</p>
 
-<p>$ drive pull photos/img001.png docs</p>
+<p><code>
+$ drive pull photos/img001.png docs
+</code></p>
 
 <p>Pulling by id is also supported</p>
 
-<p>$ drive pull --id 0fM9rt0Yc9RTPaDdsNzg1dXVjM0E 0fM9rt0Yc9RTPaTVGc1pzODN1NjQ 0fM9rt0Yc9RTPV1NaNFp5WlV3dlU</p>
+<p><code>
+$ drive pull --id 0fM9rt0Yc9RTPaDdsNzg1dXVjM0E 0fM9rt0Yc9RTPaTVGc1pzODN1NjQ 0fM9rt0Yc9RTPV1NaNFp5WlV3dlU
+</code></p>
 
 <h1>Note: Checksum verification:</h1>
 
@@ -129,25 +140,35 @@ $ drive pull --matches vines docx</p>
 
 <p>To turn checksum verification back on:</p>
 
-<p>$ drive pull -ignore-checksum=false</p>
+<p><code>
+$ drive pull -ignore-checksum=false
+</code></p>
 
 <p>drive also supports piping pulled content to stdout which can be accomplished by:</p>
 
-<p>$ drive pull -piped path1 path2</p>
+<p><code>
+$ drive pull -piped path1 path2
+</code></p>
 
 <h4>Exporting Docs</h4>
 
 <p>By default, the <code>pull</code> command will export Google Docs documents as PDF files. To specify other formats, use the <code>-export</code> option:</p>
 
-<p>$ drive pull -export pdf,rtf,docx,txt</p>
+<p><code>
+$ drive pull -export pdf,rtf,docx,txt
+</code></p>
 
 <p>To explicitly export instead of using <code>--force</code></p>
 
-<p>$ drive pull --export pdf,rtf,docx,txt --explicitly-export</p>
+<p><code>
+$ drive pull --export pdf,rtf,docx,txt --explicitly-export
+</code></p>
 
 <p>By default, the exported files will be placed in a new directory suffixed by <code>_exports</code> in the same path. To export the files to a different directory, use the <code>-export-dir</code> option:</p>
 
-<p>$ drive pull -export pdf,rtf,docx,txt -export-dir ~/Desktop/exports</p>
+<p><code>
+$ drive pull -export pdf,rtf,docx,txt -export-dir ~/Desktop/exports
+</code></p>
 
 <p><strong>Supported formats:</strong></p>
 
@@ -174,11 +195,15 @@ $ drive pull --matches vines docx</p>
 
 <p>Note: To ignore checksum verification during a push:</p>
 
-<p>$ drive push -ignore-checksum</p>
+<p><code>
+$ drive push -ignore-checksum
+</code></p>
 
 <p>drive also supports pushing content piped from stdin which can be accomplished by:</p>
 
-<p>$ drive push -piped path</p>
+<p><code>
+$ drive push -piped path
+</code></p>
 
 <ul>
 <li><p>Note:</p>
@@ -189,51 +214,68 @@ $ drive pull --matches vines docx</p>
 A couple of scenarios in which data was getting totally clobbered and unrecoverable, drive now tries to play it safe and warn you if your data could potentially be lost e.g during a to-disk clobber for which you have no backup. At least with a push you have the luxury of untrashing content. To disable this safety, run drive with flag <code>-ignore-conflict</code> e.g:</li>
 </ul>
 
-<p>$ drive pull -ignore-conflict collaboration_documents</p>
+<p><code>$ drive pull -ignore-conflict collaboration_documents</code></p>
 
 <p>Playing the safety card even more, if you want to get changes that are non clobberable ie only additions
 run drive with flag <code>-no-clobber</code> e.g:</p>
 
-<p>$ drive pull -no-clobber Makefile
+<p><code>$ drive pull -no-clobber Makefile</code>
 * Ordinarily your system will not traverse nested symlinks e.g:</p>
 
-<p>$ mkdir -p a/b
-$ mkdir -p ~/Desktop/z1/z2 &amp;&amp; ls ~ &gt; ~/Desktop/z1/z2/listing.txt
-$ ln -s ~/Desktop/z1/z2 a/b
-$ ls -R a # Should print only z2 and nothing inside it. </p>
+<p><code>$ mkdir -p a/b</code></p>
+
+<p><code>$ mkdir -p ~/Desktop/z1/z2 &amp;&amp; ls ~ &gt; ~/Desktop/z1/z2/listing.txt</code></p>
+
+<p><code>$ ln -s ~/Desktop/z1/z2 a/b</code></p>
+
+<p><code>$ ls -R a</code> # Should print only z2 and nothing inside it. </p>
 
 <p>However in relation to <a href="https://github.com/odeke-em/drive/issues/80">#80</a>, for purposes of consistency with your Drive, traversing symlinks has been added.</p></li>
 </ul>
 
 <p>For safety with non clobberable changes i.e only additions:</p>
 
-<p>$ drive push -no-clobber</p>
+<p><code>
+$ drive push -no-clobber
+</code></p>
 
 <ul>
 <li>Due to the reasons above, drive should be able to warn you in case of total clobbers on data. To turn off this behaviour/safety, pass in the <code>-ignore-conflict</code> flag i.e:</li>
 </ul>
 
-<p>$ drive push -force sure<em>of</em>content</p>
+<p><code>
+$ drive push -force sure_of_content
+</code></p>
 
 <p>To pull without user input (i.e. without prompt)</p>
 
-<p>$ drive push -quiet</p>
+<p><code>
+$ drive push -quiet
+</code></p>
 
 <p>or</p>
 
-<p>$ drive push -no-prompt</p>
+<p><code>
+$ drive push -no-prompt
+</code></p>
 
 <p>To get Google Drive to convert a file to its native Google Docs format</p>
 
-<p>$ drive push -convert</p>
+<p><code>
+$ drive push -convert
+</code></p>
 
 <p>Extra features: to make Google Drive attempt Optical Character Recognition (OCR) for png, gif, pdf and jpg files.</p>
 
-<p>$ drive push -ocr</p>
+<p><code>
+$ drive push -ocr
+</code></p>
 
 <p>Note: To use OCR, your account should have this feature. You can find out if your account has OCR allowed.</p>
 
-<p>$ drive features</p>
+<p><code>
+$ drive features
+</code></p>
 
 <h1>Note:</h1>
 
@@ -243,7 +285,9 @@ $ ls -R a # Should print only z2 and nothing inside it. </p>
 
 <p>If you would like to coerce a certain mimeType that you&#39;d prefer to assert with Google Drive pushes, use flag <code>-coerce-mime &lt;short-key&gt;</code></p>
 
-<p>$ drive push -coerce-mime docx my<em>test</em>doc</p>
+<p><code>
+$ drive push -coerce-mime docx my_test_doc
+</code></p>
 
 <ul>
 <li>Excluding certain operations can be done both for pull and push by passing in flag
@@ -252,123 +296,173 @@ $ ls -R a # Should print only z2 and nothing inside it. </p>
 
 <p>e.g</p>
 
-<p>$ drive pull --exclude-ops &quot;delete,update&quot; vines
-$ drive push --exclude-ops &quot;create&quot; sensitive_files</p>
+<p><code>
+$ drive pull --exclude-ops &quot;delete,update&quot; vines
+</code></p>
+
+<p><code>
+$ drive push --exclude-ops &quot;create&quot; sensitive_files
+</code></p>
 
 <h3>Publishing</h3>
 
 <p>The <code>pub</code> command publishes a file or directory globally so that anyone can view it on the web using the link returned.</p>
 
-<p>$ drive pub photos</p>
+<p><code>
+$ drive pub photos
+</code></p>
 
 <ul>
 <li>Publishing by fileId is also supported</li>
 </ul>
 
-<p>$ drive pub --id 0fM9rt0Yc9RTPV1NaNFp5WlV3dlU 0fM9rt0Yc9RTPSTZEanBsamZjUXM</p>
+<p><code>
+$ drive pub --id 0fM9rt0Yc9RTPV1NaNFp5WlV3dlU 0fM9rt0Yc9RTPSTZEanBsamZjUXM
+</code></p>
 
 <h3>Unpublishing</h3>
 
 <p>The <code>unpub</code> command is the opposite of <code>pub</code>. It unpublishes a previously published file or directory.</p>
 
-<p>$ drive unpub photos</p>
+<p><code>
+$ drive unpub photos
+</code></p>
 
 <ul>
 <li>Publishing by fileId is also supported</li>
 </ul>
 
-<p>$ drive unpub --id 0fM9rt0Yc9RTPV1NaNFp5WlV3dlU 0fM9rt0Yc9RTPSTZEanBsamZjUXM</p>
+<p><code>
+$ drive unpub --id 0fM9rt0Yc9RTPV1NaNFp5WlV3dlU 0fM9rt0Yc9RTPSTZEanBsamZjUXM
+</code></p>
 
 <h3>Sharing and Emailing</h3>
 
 <p>The <code>share</code> command enables you to share a set of files with specific users and assign them specific roles as well as specific generic access to the files. It also allows for email notifications on share.</p>
 
-<p>$ drive share -emails odeke@ualberta.ca,odeke.ex@gmail.com -message &quot;This is the substring file I told you about&quot; -role writer -type group mnt/substringfinder.c projects/kmp.c</p>
+<p><code>
+$ drive share -emails odeke@ualberta.ca,odeke.ex@gmail.com -message &quot;This is the substring file I told you about&quot; -role writer -type group mnt/substringfinder.c projects/kmp.c
+</code></p>
 
 <p>For example to share a file with users of a mailing list and a custom message</p>
 
-<p>$ drive share -emails drive-mailing-list@gmail.com -message &quot;Here is the drive code&quot; -role group mnt/drive</p>
+<p><code>
+$ drive share -emails drive-mailing-list@gmail.com -message &quot;Here is the drive code&quot; -role group mnt/drive
+</code></p>
 
 <ul>
 <li>Also supports sharing by fileId</li>
 </ul>
 
-<p>$ drive share --emails developers@developers.devs --message &quot;Developers, developers developers&quot; --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+<p><code>
+$ drive share --emails developers@developers.devs --message &quot;Developers, developers developers&quot; --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U
+</code></p>
 
 <h3>Unsharing</h3>
 
 <p>The <code>unshare</code> command revokes access of a specific accountType to a set of files.</p>
 
-<p>$ drive unshare -type group mnt/drive</p>
+<p><code>
+$ drive unshare -type group mnt/drive
+</code></p>
 
 <ul>
 <li>Also supports unsharing by fileId</li>
 </ul>
 
-<p>$ drive unshare --type group --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+<p><code>
+$ drive unshare --type group --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U
+</code></p>
 
 <h3>Touching</h3>
 
 <p>Files that exist remotely can be touched i.e their modification time updated to that on the remote server using the <code>touch</code> command:</p>
 
-<p>$ drive touch Photos/img001.png logs/log9907.txt</p>
+<p><code>
+$ drive touch Photos/img001.png logs/log9907.txt
+</code></p>
 
 <p>For example to touch all files that begin with digits 0  to 9:</p>
 
-<p>$ drive touch -matches $(seq 0 9)</p>
+<p><code>
+$ drive touch -matches $(seq 0 9)
+</code></p>
 
 <ul>
 <li>Also supports touching of files by fileId</li>
 </ul>
 
-<p>$ drive touch --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+<p><code>
+$ drive touch --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U
+</code></p>
 
 <h3>Trashing and Untrashing</h3>
 
 <p>Files can be trashed using the <code>trash</code> command:</p>
 
-<p>$ drive trash Demo</p>
+<p><code>
+$ drive trash Demo
+</code></p>
 
 <p>To trash files that contain a prefix match e.g all files that begin with Untitled, or Make</p>
 
 <p>Note: This option uses the current working directory as the parent that the paths belong to.</p>
 
-<p>$ drive trash -matches Untitled Make</p>
+<p><code>
+$ drive trash -matches Untitled Make
+</code></p>
 
 <p>Files that have been trashed can be restored using the <code>untrash</code> command:</p>
 
-<p>$ drive untrash Demo</p>
+<p><code>
+$ drive untrash Demo
+</code></p>
 
 <p>To untrash files that match a certain prefix pattern</p>
 
-<p>$ drive untrash -matches pQueue photos Untitled</p>
+<p><code>
+$ drive untrash -matches pQueue photos Untitled
+</code></p>
 
 <ul>
 <li>Also supports trashing/untrashing by fileId</li>
 </ul>
 
-<p>$ drive trash --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U
-$ drive untrash --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+<p><code>
+$ drive trash --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U
+</code></p>
+
+<p><code>
+$ drive untrash --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U
+</code></p>
 
 <h3>Emptying the Trash</h3>
 
 <p>Emptying the trash will permanently delete all trashed files. They will be unrecoverable using <code>untrash</code> after running this command.</p>
 
-<p>$ drive emptytrash</p>
+<p><code>
+$ drive emptytrash
+</code></p>
 
 <h3>Deleting</h3>
 
 <p>Deleting items will PERMANENTLY remove the items from your drive. This operation is irreversible.</p>
 
-<p>$ drive delete flux.mp4</p>
+<p><code>
+$ drive delete flux.mp4
+</code></p>
 
-<p>$ drive delete --matches onyx swp</p>
+<p><code>
+$ drive delete --matches onyx swp
+</code></p>
 
 <ul>
 <li>Also supports deletion by fileIds</li>
 </ul>
 
-<p>$ drive delete --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+<p><code>
+$ drive delete --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U
+</code></p>
 
 <h3>Listing Files</h3>
 
@@ -376,29 +470,41 @@ $ drive untrash --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</
 
 <p>Run it without arguments to list all files in the current directory:</p>
 
-<p>$ drive list</p>
+<p><code>
+$ drive list
+</code></p>
 
 <p>Pass in a directory path to list files in that directory:</p>
 
-<p>$ drive list photos</p>
+<p><code>
+$ drive list photos
+</code></p>
 
 <p>To list matches</p>
 
-<p>$ drive list --matches mp4 go</p>
+<p><code>
+$ drive list --matches mp4 go
+</code></p>
 
 <p>The <code>-trashed</code> option can be specified to show trashed files in the listing:</p>
 
-<p>$ drive list -trashed photos</p>
+<p><code>
+$ drive list -trashed photos
+</code></p>
 
 <p>To get detailed information about the listings e.g owner information and the version number of all listed files:</p>
 
-<p>$ drive list -owners -l -version</p>
+<p><code>
+$ drive list -owners -l -version
+</code></p>
 
 <ul>
 <li>Also supports listing by fileIds</li>
 </ul>
 
-<p>$ drive list -depth 3 --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+<p><code>
+$ drive list -depth 3 --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U
+</code></p>
 
 <ul>
 <li>Listing allows for sorting by fields e.g <code>name</code>, <code>version</code>, <code>size,</code>modtime<code>, lastModifiedByMeTime</code>lvt<code>,</code>md5<code>. To do this in reverse order, suffix</code>_r<code>or</code>-` to the selected key</li>
@@ -406,145 +512,212 @@ $ drive untrash --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</
 
 <p>e.g to first sort by modTime, then largest-to-smallest and finally most number of saves:</p>
 
-<p>$ drive list --sort modtime,size<em>r,version</em>r Photos</p>
+<p><code>
+$ drive list --sort modtime,size_r,version_r Photos
+</code></p>
 
 <ul>
 <li>For advanced listing</li>
 </ul>
 
-<p>$ drive list --skip-mime mp4,doc,txt
+<p><code>
+$ drive list --skip-mime mp4,doc,txt
+</code></p>
+
+<p><code>
 $ drive list --match-mime xls,docx
-$ drive list --exact-title url_test,Photos</p>
+</code></p>
+
+<p><code>
+$ drive list --exact-title url_test,Photos
+</code></p>
 
 <h3>Stating Files</h3>
 
 <p>The <code>stat</code> commands show detailed file information for example people with whom it is shared, their roles and accountTypes, and
 fileId etc. It is useful to help determine whom and what you want to be set when performing share/unshare</p>
 
-<p>$ drive stat mnt</p>
+<p><code>
+$ drive stat mnt
+</code></p>
 
 <p>By default <code>stat</code> won&#39;t recursively stat a directory, to enable recursive stating:</p>
 
-<p>$ drive stat -r mnt</p>
+<p><code>
+$ drive stat -r mnt
+</code></p>
 
 <ul>
 <li>Also supports stat-ing by fileIds</li>
 </ul>
 
-<p>$ drive stat -r --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+<p><code>
+$ drive stat -r --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U
+</code></p>
 
 <p>OR</p>
 
-<p>$ drive stat -depth 4 --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U</p>
+<p><code>
+$ drive stat -depth 4 --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U
+</code></p>
 
 <h3>Retrieving md5 Checksums</h3>
 
-<p>The <code>md5sum</code> command quickly retrieves the md5 checksums of the files on your drive. The result can be fed into the &quot;md5sum -c&quot; shell command to validate the integrity of the files on Drive versus the local copies.</p>
+<p>The <code>md5sum</code> command quickly retrieves the md5 checksums of the files on your drive. The result can be fed into the <code>md5sum -c</code> shell command to validate the integrity of the files on Drive versus the local copies.</p>
 
 <p>Check that files on Drive are present and match local files:</p>
 
-<p>~/MyDrive/folder$ drive md5sum | md5sum -c</p>
+<p><code>
+~/MyDrive/folder$ drive md5sum | md5sum -c
+</code></p>
 
 <p>Do a two-way diff (will also locate files missing on either side)</p>
 
-<p>~/MyDrive/folder$ diff &lt;(drive md5sum) &lt;(md5sum *)</p>
+<p><code>
+~/MyDrive/folder$ diff &lt;(drive md5sum) &lt;(md5sum *)
+</code></p>
 
 <p>Same as above, but include subfolders </p>
 
-<p>~/MyDrive/folder$ diff &lt;(drive md5sum -r) &lt;(find * -type f | sort | xargs md5sum)</p>
+<p><code>
+~/MyDrive/folder$ diff &lt;(drive md5sum -r) &lt;(find * -type f | sort | xargs md5sum)
+</code></p>
 
 <p>Compare across two different Drive accounts, including subfolders</p>
 
-<p>~$ diff &lt;(drive md5sum -r MyDrive/folder) &lt;(drive md5sum -r OtherDrive/otherfolder)</p>
+<p><code>
+~$ diff &lt;(drive md5sum -r MyDrive/folder) &lt;(drive md5sum -r OtherDrive/otherfolder)
+</code></p>
 
-<p><em>Note: Running the &#39;drive md5sum&#39; command retrieves pre-computed md5 sums from Drive; its speed is proportional to the number of files on Drive. Running the shell &#39;md5sum&#39; command on local files requires reading through the files; its speed is proportional to the size of the files.</em></p>
+<p><em>Note: Running the <code>drive md5sum</code> command retrieves pre-computed md5 sums from Drive; its speed is proportional to the number of files on Drive. Running the shell &#39;md5sum&#39; command on local files requires reading through the files; its speed is proportional to the size of the files.</em></p>
 
 <h3>New File</h3>
 
 <p>drive allows you to create an empty file or folder remotely
 Sample usage:</p>
 
-<p>$ drive new --folder flux
+<p><code>
+$ drive new --folder flux
+</code></p>
+
+<p><code>
 $ drive new --mime-key doc bofx
+</code></p>
+
+<p><code>
 $ drive new --mime-key folder content
-$ drive new flux.txt oxen.pdf # Allow auto type resolution from the extension</p>
+</code></p>
+
+<p><code>
+$ drive new flux.txt oxen.pdf</code> # Allow auto type resolution from the extension</p>
 
 <h3>Quota</h3>
 
 <p>The <code>quota</code> command prints information about your drive, such as the account type, bytes used/free, and the total amount of storage available.</p>
 
-<p>$ drive quota</p>
+<p><code>
+$ drive quota
+</code></p>
 
 <h3>Features</h3>
 
 <p>The <code>features</code> command provides information about the features present on the
 drive being queried and the request limit in queries per second</p>
 
-<p>$ drive features</p>
+<p><code>
+$ drive features
+</code></p>
 
 <h3>About</h3>
 
 <p>The <code>about</code> command provides information about the program as well as that about
 your Google Drive. Think of it as a hybrid between the <code>features</code> and <code>quota</code> commands.</p>
 
-<p>$ drive about</p>
+<p><code>
+$ drive about
+</code></p>
 
 <p>OR for detailed information</p>
 
-<p>$ drive about -features -quota</p>
+<p><code>
+$ drive about -features -quota
+</code></p>
 
 <h3>Help</h3>
 
 <p>Run the <code>help</code> command without any arguments to see information about the commands that are available:</p>
 
-<p>$ drive help</p>
+<p><code>
+$ drive help
+</code></p>
 
 <p>Pass in the name of a command to get information about that specific command and the options that can be passed to it.</p>
 
-<p>$ drive help push</p>
+<p><code>
+$ drive help push
+</code></p>
 
 <p>To get help for all the commands</p>
 
-<p>$ drive help all</p>
+<p><code>
+$ drive help all
+</code></p>
 
 <h3>Copying</h3>
 
 <p>drive allows you to copy content remotely without having to explicitly download and then reupload.</p>
 
-<p>$ drive copy -r blobStore.py mnt flagging</p>
+<p><code>
+$ drive copy -r blobStore.py mnt flagging
+</code></p>
 
-<p>$ drive copy blobStore.py blobStoreDuplicated.py</p>
+<p><code>
+$ drive copy blobStore.py blobStoreDuplicated.py
+</code></p>
 
 <ul>
 <li>Also supports copying by fileIds</li>
 </ul>
 
-<p>$ drive copy -r --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U ../content</p>
+<p><code>
+$ drive copy -r --id 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U ../content
+</code></p>
 
 <h3>Rename</h3>
 
 <p>drive allows you to rename a file/folder remotely. To do so:</p>
 
-<p>$ drive rename url<em>test url</em>test_results
-$ drive rename openSrc/2015 2015-Contributions</p>
+<p><code>
+$ drive rename url_test url_test_results
+</code></p>
+
+<p><code>
+$ drive rename openSrc/2015 2015-Contributions
+</code></p>
 
 <ul>
 <li>Also supports renaming by fileId</li>
 </ul>
 
-<p>$ drive rename 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 fluxing</p>
+<p><code>
+$ drive rename 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 fluxing
+</code></p>
 
 <h3>Move</h3>
 
 <p>drive allows you to move content remotely between folders. To do so:</p>
 
-<p>$ drive move photos/2015 angles library archives/storage</p>
+<p><code>
+$ drive move photos/2015 angles library archives/storage
+</code></p>
 
 <ul>
 <li>Also supports moving by fileId</li>
 </ul>
 
-<p>$ drive rename 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U ../../new_location</p>
+<p><code>
+$ drive rename 0fM9rt0Yc9RTPeHRfRHRRU0dIY97 0fM9rt0Yc9kJRPSTFNk9kSTVvb0U ../../new_location
+</code></p>
 
 <h3>DriveIgnore</h3>
 
@@ -553,16 +726,9 @@ directory of the mounted drive. Blank lines and those prefixed by &#39;#&#39; ar
 
 <p>For example:</p>
 
-<p>$ cat &lt;&lt; $ &gt;&gt; .driveignore</p>
-
-<blockquote>
-<h1>My drive ignore file</h1>
-
-<p>.gd$
-.so$
-.swp$
-$</p>
-</blockquote>
+<p><code>
+$ cat &lt;&lt; $ &gt;&gt; .driveignore &gt; # My drive ignore file &gt; \.gd$ &gt; \.so$ &gt; \.swp$ &gt; $
+</code></p>
 
 <p>Note: Pattern matching and suffixes are done by regular expression matching so make sure to use a valid regular expression suffix.</p>
 
@@ -581,18 +747,20 @@ desire the ability to have *.desktop files that enable the file to be opened app
 
 <h3>Index Prune</h3>
 
-<ul>
-<li>index </li>
-</ul>
-
 <p>If you would like to fetch missing index files for files that would otherwise not need any modifications, run:</p>
 
-<p>$ drive index path1 path2 path3/path3.1 # To fetch any missing indices in those paths
-$ drive index --id 0CLu4lbUI9RTRM80k8EMoe5JQY2z</p>
+<p><code>
+$ drive index path1 path2 path3/path3.1</code> # To fetch any missing indices in those paths</p>
+
+<p><code>
+$ drive index --id 0CLu4lbUI9RTRM80k8EMoe5JQY2z
+</code></p>
 
 <p>You can also fetch specific files by prefix matches</p>
 
-<p>$ drive index --matches mp3 jpg</p>
+<p><code>
+$ drive index --matches mp3 jpg
+</code></p>
 
 <ul>
 <li>prune</li>
@@ -601,14 +769,18 @@ $ drive index --id 0CLu4lbUI9RTRM80k8EMoe5JQY2z</p>
 <p>In case you might have deleted files remotely but never using drive, and feel like you have stale indices,
 running <code>drive index --prune</code> will search your entire indices dir for index files that do not exist remotely and remove those ones</p>
 
-<p>$ drive index --prune</p>
+<p><code>
+$ drive index --prune
+</code></p>
 
 <ul>
 <li>prune-and-index
 To combine both operations (prune and then fetch) for indices:</li>
 </ul>
 
-<p>$ drive index --all-ops</p>
+<p><code>
+$ drive index --all-ops
+</code></p>
 
 <h3>Revoking Account Access</h3>
 
@@ -633,15 +805,25 @@ To combine both operations (prune and then fetch) for indices:</li>
 <p>For example to patch your code with that on remote branch patch-1, you&#39;ll need to go into the source
 code directory, fetch all content from the git remote, checkout the patch branch then run the go installation: something like this.</p>
 
-<p>$ cd $GOPATH/src/github.com/odeke-em/drive</p>
+<p><code>
+$ cd $GOPATH/src/github.com/odeke-em/drive
+</code></p>
 
-<p>$ git fetch --all</p>
+<p><code>
+$ git fetch --all
+</code></p>
 
-<p>$ git checkout patch-1</p>
+<p><code>
+$ git checkout patch-1
+</code></p>
 
-<p>$ git pull origin patch-1</p>
+<p><code>
+$ git pull origin patch-1
+</code></p>
 
-<p>$ go get github.com/odeke-em/drive/cmd/drive</p>
+<p><code>
+$ go get github.com/odeke-em/drive/cmd/drive
+</code></p>
 
 <p></div></p>
   <!-- Begin Footer -->

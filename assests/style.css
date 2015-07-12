@@ -557,3 +557,18 @@
 	  border-top: 1px dotted #000000;
 	  }
 	  
+
+/* Pre and Code Tags  */
+code, pre, var { background: transparent; color: #353535; font: 1em Pragmata, "Courier New", Courier, monospace; }
+
+pre { border: 1px solid #DDDDDD; font-size: .8em; height: auto; /*\*/ overflow: auto; /**/ padding: 2px; width: 443px; }
+
+code { border: 1px solid #DDDDDD; font-size: .8em; height: auto; /*\*/ overflow: auto; /**/ padding: 2px; width: 443px; }
+
+pre.php { color: #B22222; }
+
+pre.php span.comment { color: #FFA500 !important; }
+
+pre.php var { color: #333333; }
+
+pre.html span.comment { color: #999999 !important; }

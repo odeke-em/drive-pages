@@ -99,19 +99,40 @@
 <p><code>drive</code> is not a sync daemon, it provides:</p>
 
 <ul>
-<li><p>Upstreaming and downstreaming. Unlike a sync command, we provide pull and push actions. User has opportunity to decide what to do with their local copy and when. Do some changes, either push it to remote or revert it to the remote version. Perform these actions with user prompt.</p>
+<li>Upstreaming and downstreaming. Unlike a sync command, we provide pull and push actions. User has opportunity to decide what to do with their local copy and when. Do some changes, either push it to remote or revert it to the remote version. Perform these actions with user prompt.</li>
+</ul>
 
-<pre><code>$ echo &quot;hello&quot; &gt; hello.txt
+<p><code>
+$ echo &quot;hello&quot; &gt; hello.txt
+</code></p>
+
+<p><code>
 $ drive push # pushes hello.txt to Google Drive
-$ echo &quot;more text&quot; &gt;&gt; hello.txt
-$ drive pull # overwrites the local changes with the remote version
-</code></pre></li>
-<li><p>Allowing to work with a specific file or directory, optionally not recursively. If you recently uploaded a large VM image to Google Drive, yet  only a few text files are required for you to work, simply only push/pull the file you want to work with.</p>
+</code></p>
 
-<pre><code>$ echo &quot;hello&quot; &gt; hello.txt
-$ drive push hello.txt # pushes only the specified file
-$ drive pull path/to/a/b # pulls the remote directory recursively
-</code></pre></li>
+<p><code>
+$ echo &quot;more text&quot; &gt;&gt; hello.txt
+</code></p>
+
+<p><code>
+$ drive pull # overwrites the local changes with the remote version
+</code></p>
+
+<ul>
+<li>Allowing to work with a specific file or directory, optionally not recursively. If you recently uploaded a large VM image to Google Drive, yet  only a few text files are required for you to work, simply only push/pull the file you want to work with.</li>
+</ul>
+
+<p><code>
+$ echo &quot;hello&quot; &gt; hello.txt
+</code></p>
+
+<p><code>
+$ drive push hello.txt</code> # pushes only the specified file</p>
+
+<p><code>
+$ drive pull path/to/a/b</code> # pulls the remote directory recursively</p>
+
+<ul>
 <li><p>Better I/O scheduling. One of the major goals is to provide better scheduling to improve upload/download times.</p></li>
 <li><p>Possibility to support multiple accounts. Pull from or push to multiple Google Drive remotes. Possibility to support multiple backends. Why not to push to Dropbox or Box as well?</p></li>
 </ul>
@@ -141,8 +162,7 @@ $ drive pull path/to/a/b # pulls the remote directory recursively
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at</p>
 
-<pre><code>http://www.apache.org/licenses/LICENSE-2.0
-</code></pre>
+<p>http://www.apache.org/licenses/LICENSE-2.0</p>
 
 <p>Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
