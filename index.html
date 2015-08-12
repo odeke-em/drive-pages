@@ -1,107 +1,64 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Drive Client Homepage</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" type="text/css" href="assests/style.css" media="screen" />
-<LINK REL="SHORTCUT ICON" 
-      HREF="favicon.ico">
-</head>
-<body>
-<div id="container">
-  <!-- Begin Header -->
-  <div id="header"> <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
-    <div class="headercontent">
-        <h1><img src="assests/logo9000.png"></h1>
-      <h2>A Command Line Google Drive Client.</h2>
-      <!-- Begin Menu -->
-      <div id="menucontainer">
-        <div id="menu"><span class="mleft"></span>
-          <div class="box"><a href="index.html">Home</a></div>
-          <div class="boxx">
-            <div class="boxx1"></div>
-            <div class="boxx2"></div>
-            <div class="boxx3"></div>
-            <div class="boxx4"></div>
-            <div class="boxx5"></div>
-            <div class="boxx6"></div>
-            <div class="boxx7"></div>
-            <div class="boxx8"></div>
-          </div>
-          <div class="box"><a href="install.html">Install</a></div>
-          <div class="boxx">
-            <div class="boxx1"></div>
-            <div class="boxx2"></div>
-            <div class="boxx3"></div>
-            <div class="boxx4"></div>
-            <div class="boxx5"></div>
-            <div class="boxx6"></div>
-            <div class="boxx7"></div>
-            <div class="boxx8"></div>
-          </div>
-          <div class="box"><a href="dev.html">Develop</a></div>
-          <div class="boxx">
-            <div class="boxx1"></div>
-            <div class="boxx2"></div>
-            <div class="boxx3"></div>
-            <div class="boxx4"></div>
-            <div class="boxx5"></div>
-            <div class="boxx6"></div>
-            <div class="boxx7"></div>
-            <div class="boxx8"></div>
-          </div>
-          <div class="box"><a href="http://www.github.com/odeke-em/drive">Github</a></div>
-          <div class="boxx">
-            <div class="boxx1"></div>
-            <div class="boxx2"></div>
-            <div class="boxx3"></div>
-            <div class="boxx4"></div>
-            <div class="boxx5"></div>
-            <div class="boxx6"></div>
-            <div class="boxx7"></div>
-            <div class="boxx8"></div>
-          </div>
-          <div class="box"><a href="about.html">About</a></div>
-          <div class="boxx">
-            <div class="boxx1"></div>
-            <div class="boxx2"></div>
-            <div class="boxx3"></div>
-            <div class="boxx4"></div>
-            <div class="boxx5"></div>
-            <div class="boxx6"></div>
-            <div class="boxx7"></div>
-            <div class="boxx8"></div>
-          </div>
-          <div class="box"><a href="faq.html">FAQ</a></div>
-          <span class="mright"></span> </div>
-      </div>
-      <!-- End Menu -->
-    </div>
-    <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b> </div>
-  <!-- End Header --><p><div id="promo"> <b class="xtop2"><b class="xb12"></b><b class="xb22"></b><b class="xb32"></b><b class="xb42"></b></b>
-    <div class="promocontent">
-      <h1>Current Release <a href="https://travis-ci.org/odeke-em/drive"><img src="https://travis-ci.org/odeke-em/drive.png?branch=master" alt="Build Status"></a></h1>
-      <p>Drive version 0.2.5 is out. You can vist the <a href="http://">github page</a>, or <a href="install.html">install guide</a> for more into on updating.</p>
-    </div>
-    <b class="xbottom2"><b class="xb42"></b><b class="xb32"></b><b class="xb22"></b><b class="xb12"></b></b> </div></p>
+<html>
+	<head>
+		<meta charset="utf8" />
+		<title>drive &mdash; a tiny command line client for Google Drive</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="content">
+		
+			<div id="header">
+				<a class="btn btn-primary" style="float: right; font-size:18pt; padding:1em;" href="https://github.com/odeke-em/drive">Download</a>
+				<div style="font-size: 32pt;">drive</div>
+				<div style="color: #919191;">A tiny command line client for Google Drive</div>
+			</div>
+			
+			<div>
+				<div class="section">A beautifully simple client</div>
+				
+				<p class="text">
+					<b>drive</b> is a tiny command line client to push or pull files from your Google Drive. It is written in Go and has been battle-tested on 100GB+ accounts.
+				</p>
+				
+				<br /><div class="section">Installation is easy</div>
+				
+				<p class="text">
+					You'll need <a href="http://golang.org">Go 1.3 or higher</a> installed on your system. 
+				</p>
+				
+				<pre>go get -u github.com/odeke-em/drive/cmd/drive</pre>
+				
+				<br /><div class="section">Setup and basic useage</div>
+				
+				<p class="text">
+					Create a folder that will act as your local Google Drive, for example:
+				</p>
+				
+				<pre>mkdir ~/Google\ Drive && cd ~/Google\ Drive
+drive init
+drive pull
+echo "hello" > file.txt
+drive push</pre>
 
-<p><div class="left">
-    <h3><a href="#">Getting started</a></h3>
-    <p>Drive is easy to install on alot of setups, it&#39;s as simple as running <code>go get github.com/odeke-em/drive</code> provided you have golang installed <a href="#">more info here</a>. You can also install drive with a few prebuilt packages, or it might even be available in your distros repos already <a href="#">more deatils here</a>.</p>
-  </div>
-  <div class="right">
-    <h3><a href="#">What is drive written in?</a></h3>
-    <p>Drive is written in the go lang programing language. It&#39;s fast and extremely easy to learn. More details on go etc here later. Mention stuff? blah blah filler... yup filler content lol. Oh and I&#39;m batman... Just thought people should know this. Since you know... batman.</p>
-  </div>
-  <div class="wide">
-    <h3><a href="#">General Content</a></h3>
-    <p>Some more info, Not sure what to include on the index page yet.</p>
-  </div></p>
-  <!-- Begin Footer -->
-  <div id="footer">
-      <p>&copy; Copyright 2015 <a href="https://github.com/odeke-em">Emmanuel Odeke</a> and <a href="https://github.com/odeke-em/drive">Contirbutors</a> | Drive <a href="https://github.com/odeke-em/drive/blob/master/LICENSE">License</a></p>
-  </div>
-  <!-- End Footer -->
-</div>
-</body>
+				<br /><div class="section">A sweet suite of features</div>
+				
+				<p class="text">
+					<b>drive</b> supports 20+ features such as sharing, renaming, and moving files.  View the complete <a href="https://github.com/odeke-em/drive">documentation</a> in the Readme.
+				</p>
+				
+				<br /><div class="section">Support</div>
+				
+				<p class="text">
+					<b>drive</b> is developed by <a href="https://github.com/odeke-em">Emmanuel Odeke</a>. For questions or if you run into any issues hop over to the project's <a href="https://github.com/odeke-em/drive/issues">GitHub Issues</a> page.
+				</p>
+				
+			</div>
+			
+			<div>
+				<img src="http://media.giphy.com/media/N38v1Y2lKO9I4/giphy.gif" height="64px" />
+			</div>
+			
+		</div>
+	</body>
 </html>
+
